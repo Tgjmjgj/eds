@@ -1,0 +1,132 @@
+﻿<Window x:Class="GOST_EDS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GOST_EDS"
+        mc:Ignorable="d"
+        Title="No" Height="438" Width="680" Background="Transparent" AllowsTransparency="True" WindowStyle="None" SnapsToDevicePixels="True" WindowStartupLocation="CenterScreen">
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="10" ShadowDepth="15" Direction="235" Opacity="0.8"/>
+    </Window.Effect>
+    <Grid x:Name="grid">
+        <Grid x:Name="grid_1" Margin="15,22,134,58" Panel.ZIndex="1000" Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="25" />
+                <RowDefinition Height="66" />
+            </Grid.RowDefinitions>
+            <TextBox x:Name="textBox" Grid.Row="0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Times New Roman" FontSize="14" TextChanged="textBox1_TextChanged"/>
+            <Button x:Name="button" Grid.Row="1" Content="Хеш-функция Стрибог" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" Cursor="Hand" Click="button_Click_1" Panel.ZIndex="80" FontSize="14"/>
+            <TextBox x:Name="textBox1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Auto" AcceptsReturn="True" TextWrapping="Wrap" FontFamily="Square721 BT" FontSize="22" FontStyle="Italic" TextChanged="textBox1_TextChanged"/>
+        </Grid>
+        <Button x:Name="button1" Content="ХЕШ" HorizontalAlignment="Left" Margin="516,26,0,0" VerticalAlignment="Top" Width="147" Height="40" Background="White" RenderTransformOrigin="0.5,0.5" IsDefault="True" Cursor="Hand" Panel.ZIndex="70" FontSize="18" FontFamily="Verdana" Click="button1_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-40"/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="button1_Copy" Content="ЭЦП" HorizontalAlignment="Left" Margin="516,66,0,0" VerticalAlignment="Top" Panel.ZIndex="60" Width="147" Height="40" Background="White" RenderTransformOrigin="0.5,0.5" Cursor="Hand" FontFamily="Verdana" FontSize="18" Click="button1_Copy_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-40"/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="button2" Padding="0" HorizontalAlignment="Left" Background="Transparent" Margin="532,0,0,0"  VerticalAlignment="Top" Width="23" ClipToBounds="False" SnapsToDevicePixels="False" Panel.ZIndex="50" IsCancel="True" ToolTip="Выход" PreviewMouseUp="button2_PreviewMouseUp" BorderBrush="#00707070" Foreground="#00000000">
+            <Image Source="Image/exit.png"/>
+        </Button>
+        <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Top" Width="536" Height="380"  BorderThickness="1,1,1,1" BorderBrush="Black" MouseDown="label_MouseDown">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,0.75" MappingMode="RelativeToBoundingBox" StartPoint="1,0">
+                    <GradientStop Color="#FF0713FF" Offset="0"/>
+                    <GradientStop Color="#FFFBFAED" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Grid x:Name="grid_2" Margin="15,22,134,124" Panel.ZIndex="120" Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <DockPanel Grid.Row="0" Grid.Column="0">
+                <ComboBox x:Name="comboBox_1" DockPanel.Dock="Top" VerticalAlignment="Top" HorizontalAlignment="Stretch" Background="White" SelectionChanged="comboBox_1_SelectionChanged">
+                    <ComboBoxItem x:Name="nist192" Content="NIST Curve P-192" IsSelected="True" />
+                    <ComboBoxItem x:Name="nist224" Content="NIST Curve P-224" />
+                    <ComboBoxItem x:Name="nist256" Content="NIST Curve P-256" />
+                    <ComboBoxItem x:Name="nist384" Content="NIST Curve P-384" />
+                </ComboBox>
+                <ListBox x:Name="listBox_1" DockPanel.Dock="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectedIndex="0" FontSize="14" SelectionChanged="listBox_1_SelectionChanged" >
+                    <ListBoxItem x:Name="listBoxItem_p">
+                        <Grid>
+                            <TextBlock Text="p" Padding="5,0,0,0"/>
+                            <TextBlock Text="=" Padding="20,0,0,0"/>
+                            <TextBlock x:Name="ui_p" Padding="35,0,0,0" FontStyle="Italic"/>
+                        </Grid>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="listBoxItem_a">
+                        <Grid>
+                            <TextBlock Text="a" Padding="5,0,0,0"/>
+                            <TextBlock Text="=" Padding="20,0,0,0"/>
+                            <TextBlock x:Name="ui_a" Padding="35,0,0,0" FontStyle="Italic"/>
+                        </Grid>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="listBoxItem_b">
+                        <Grid>
+                            <TextBlock Text="b" Padding="5,0,0,0"/>
+                            <TextBlock Text="=" Padding="20,0,0,0"/>
+                            <TextBlock x:Name="ui_b" Padding="35,0,0,0" FontStyle="Italic"/>
+                        </Grid>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="listBoxItem_gx">
+                        <Grid>
+                            <TextBlock Text="Gx" Padding="5,0,0,0"/>
+                            <TextBlock Text="=" Padding="25,0,0,0"/>
+                            <TextBlock x:Name="ui_gx" Padding="40,0,0,0" FontStyle="Italic"/>
+                        </Grid>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="listBoxItem_gy">
+                        <Grid>
+                            <TextBlock Text="Gy" Padding="5,0,0,0"/>
+                            <TextBlock Text="=" Padding="25,0,0,0"/>
+                            <TextBlock x:Name="ui_gy" Padding="40,0,0,0" FontStyle="Italic"/>
+                        </Grid>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="listBoxItem_r">
+                        <Grid>
+                            <TextBlock Text="r" Padding="5,0,0,0"/>
+                            <TextBlock Text="=" Padding="25,0,0,0"/>
+                            <TextBlock x:Name="ui_r" Padding="40,0,0,0" FontStyle="Italic"/>
+                        </Grid>
+                    </ListBoxItem>
+                    <ListBoxItem x:Name="listBoxItem_f">
+                        <Grid>
+                            <TextBlock Text="f" Padding="5,0,0,0"/>
+                            <TextBlock Text="=" Padding="25,0,0,0"/>
+                            <TextBlock x:Name="ui_f" Padding="40,0,0,0" FontStyle="Italic"/>
+                        </Grid>
+                    </ListBoxItem>
+                </ListBox>
+            </DockPanel>
+            <DockPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <TextBlock x:Name="textBlock_info" DockPanel.Dock="Top" TextAlignment="Justify" Padding="15,10,15,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White" TextWrapping="Wrap" FontFamily="Times New Roman" FontStyle="Italic" FontSize="14"/>
+                <Image x:Name="image_info" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Margin="25,0,25,40" MaxHeight="30" />
+            </DockPanel>
+            <TextBox x:Name="textBox2" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Square721 BT" FontSize="22" FontStyle="Italic" TextChanged="textBox2_TextChanged"/>
+            <Button x:Name="button3" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="Сгенерировать ЭЦП" Background="White" Cursor="Hand" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="14" Click="button3_Click"/>
+        </Grid>
+    </Grid>
+</Window>
+
